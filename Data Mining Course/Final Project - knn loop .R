@@ -1,4 +1,4 @@
-# devide the half train data into 100,200,300......9000,
+# devide the half train data into 200,400......9000,
 library(caret); set.seed(1001)
 train_pml <-train_pml[sample(dim(train_pml)[1], 18000),] # get 18,000 observation to wrok on
 intrain <- sample(dim(train_pml)[1], 9000)
