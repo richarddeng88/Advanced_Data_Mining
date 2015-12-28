@@ -1,3 +1,17 @@
+##============================ quanlitative predicotrs==============================
+# attempt to predict Sales(child car seat sales) in 400 locations based on a number of predictors.
+# the data includes qualitative predictors such as Shelveloc, an indicator of the quality.
+sales <- Carseats
+
+pairs(sales)  
+pairs(~Sales+CompPrice+Income+Advertising+Population+Price, data=sales)
+summary(lm(Sales~.+Income:Advertising+Price:Age,sales))
+contrasts(sales$ShelveLoc)
+
+
+
+
+
 ##run regresson on dataset Boston
 library(ISLR)
 library(MASS)
@@ -91,14 +105,6 @@ plot(lm.fit)
 par(mfrow=c(1,1))
 plot(bos$lstat,bos$medv,pch=20)
 
-##============================ quanlitative predicotrs==============================
-# attempt to predict Sales(child car seat sales) in 400 locations based on a number of predictors.
-# the data includes qualitative predictors such as Shelveloc, an indicator of the quality.
-car <- Carseats
-
-pairs(car)  
-summary(lm(Sales~.+Income:Advertising+Price:Age,car))
-contrasts(car$ShelveLoc)
 
 
 
