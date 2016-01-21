@@ -34,6 +34,7 @@ hsb2 <- read.csv("http://www.ats.ucla.edu/stat/data/hsb2.csv")
         attach(cuse)
         lrfit <- glm( cbind(using, notUsing) ~ age + education + wantsMore , family = binomial)
         summary(lrfit)
+        lrfit
         
         
         
