@@ -41,7 +41,10 @@ ggplot(faithful, aes(x=waiting)) + geom_histogram()
         geom_line(stat="density") +
         xlim(35, 105)
     
-    
+    ggplot(faithful, aes(x=waiting, y=..density..)) +
+        geom_histogram(fill="cornsilk", colour="grey60", size=.2) +
+        geom_density() +
+        xlim(35, 105)
     
     
     
