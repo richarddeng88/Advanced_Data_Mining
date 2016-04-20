@@ -1,8 +1,8 @@
 ################################### DATA MINING PROJECT DRAFT #############################################
-##DATA READING
-train_pml <- read.csv("data/practical_machine_l/pml-training.csv",stringsAsFactors = T)
-test_pml <- read.csv("data/practical_machine_l/pml-testing.csv",stringsAsFactors = T)
-## PREPROCESSING
+        ##DATA READING
+        train_pml <- read.csv("data/practical_machine_l/pml-training.csv",stringsAsFactors = T)
+        test_pml <- read.csv("data/practical_machine_l/pml-testing.csv",stringsAsFactors = T)
+        ## PREPROCESSING
 
     # FEATURE SELECTION (PREPROCESSING)
         # DEAL COMLUMNS WITH NAs
