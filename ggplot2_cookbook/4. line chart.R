@@ -1,4 +1,5 @@
 library(ggplot2);library(gcookbook)
+
 ggplot(BOD, aes(x=Time, y=demand)) + geom_line()
 
 # if x is categorical, then we need to add group = 1
