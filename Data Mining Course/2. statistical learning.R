@@ -34,6 +34,7 @@ abline(lm,col="red",lwd=3)
         library(MASS)
         library(ISLR)
         auto <- Auto
+        plot(auto$cylinders,auto$mpg,col="red",varwidth=T, xlab="cylinders",ylab="mpg")
         #fix(auto)
         auto$cylinders <- as.factor(auto$cylinders)
         auto$origin <- as.factor(auto$origin)
@@ -43,9 +44,6 @@ abline(lm,col="red",lwd=3)
         
         hist(auto$mpg,col="lightgreen",breaks=15)
         pairs(~mpg+log(displacement)+log(horsepower)+log(weight)+acceleration,auto)
-        
-        
-        
         
         
         plot(auto$horsepower,auto$mpg,pch=20,col=auto$cylinders)

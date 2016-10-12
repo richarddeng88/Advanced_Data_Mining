@@ -5,10 +5,8 @@ sales <- Carseats
 
 pairs(sales)  
 pairs(~Sales+CompPrice+Income+Advertising+Population+Price, data=sales)
-summary(lm(Sales~.+Income:Advertising+Price:Age,sales))
+summary(lm(Sales~.+Income:Advertising+Price:Age,data=sales))
 contrasts(sales$ShelveLoc)
-
-
 
 
 

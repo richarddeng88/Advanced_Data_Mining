@@ -57,8 +57,43 @@ tt
 
 
 
+########========================= bootstrapp ================================================
+### Estimating the Accuracy of a Statistic of Interest
+    library(boot)
+    alpha.fn=function(data,index){
+        X=data$X[index]
+        Y=data$Y[index]
+        return((var(Y)-cov(X,Y))/(var(X)+var(Y)-2*cov(X,Y)))
+    }
+    
+    # the follwoing command tells R to estimate alpha to use all 100 observation.. 
+    alpha.fn(Portfolio,1:100)
+    alpha.fn(Portfolio,sample(100,100,replace=T)) 
+            ## this is resampling with replacement, so every time the result is different. 
+    boot(Portfolio,alpha.fn,R=1000)
 
+## Estimating the Accuracy of a Linear Regression Model
+    boot.fn = function(data,index){
+        return(coef(lm(mpg~horsepower,data=data,subset=index)))
+        }
+    boot.fn(Auto,1:392)
+    
+    set.seed(1)
+    boot.fn(Auto,sample(392,392,replace=T))
+    boot(Auto,boot.fn,1000)
+        ## This indicates that the bootstrap estimate for beta0 is 0.86. for beta1, it's 0.007
 
+    summary(lm(mpg~horsepower,data=Auto))$coef
+        ## if we use the origianl data set to run linear regress, we get the coefficent estimate. 
+        ## but they are a little different with these we get from bootstrap methods.
+    
+    
+    ## we fit a ploynomial regression model
+    boot.fn=function(data,index)
+         coefficients(lm(mpg~horsepower+I(horsepower^2),data=data,subset=index))
+    set.seed(1)
+    boot(Auto,boot.fn,1000)
 
+    summary(lm(mpg~horsepower+I(horsepower^2),data=Auto))$coef
 
 

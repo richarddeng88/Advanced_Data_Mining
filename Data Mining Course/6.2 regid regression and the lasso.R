@@ -48,6 +48,7 @@ mean((ridge_pred - y_test)^2)
 out <- glmnet(x,y, alpha = 0)
 predict(out, type= "coefficients", s=best)[1:20,]
 
+
 ##========================== lasso regression ==============================================
 lasso_mod <- glmnet(x[train,],y[train], alpha = 1, lambda = grid)
 plot(lasso_mod)
