@@ -1,16 +1,12 @@
+library(dplyr)
 ### read the data first
 card = read.table("data/fraud/card.asc",sep = ";", header=T)
 account = read.table("data/fraud/account.asc",sep = ";", header=T)
-        # frequency stands for:         
-            # "POPLATEK MESICNE" stands for monthlyissuance
-            # "POPLATEK TYDNE" stands for weekly issuance
-            # "POPLATEK PO OBRATU" stands for issuance
-
 client = read.table("data/fraud/client.asc",sep = ";", header=T)
 disposition = read.table("data/fraud/disp.asc",sep = ";", header=T)
 district = read.table("data/fraud/district.asc",sep = ";", header=T)
 order = read.table("data/fraud/order.asc",sep = ";", header=T)
-transaction = read.table("data/fraud/trans.asc",sep = ";", header=T)
+trans = read.table("data/fraud/trans.asc",sep = ";", header=T)
 
 
 write.csv(card, file = "data/fraud/card.csv",row.names = F)
@@ -31,6 +27,29 @@ write.csv(transaction, file = "data/fraud/transaction.csv",row.names = F)
     client[client$month<=12,]$gender <- 'Male'
     client[client$month>12,]$month <- client[client$month>12,]$month - 50
 
+
+# merge data set
+    a = merge(disposition, account, by= "account_id")
+    b = merge(a,client,by=c("client_id","district_id"))
+    df = merge(b, card, by="disp_id", all = T)
+    
+## count the missing value
+    sum(is.na(df$card_id))
+    sapply(df, function(x){sum(is.na(x))})
+
+    
+    a
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 library(arules)    
 trans <- random.transactions(nItems = 200, nTrans = 1000, 
                                  lambda = 5, iProb = seq(0.2,0.0001, length=200))
