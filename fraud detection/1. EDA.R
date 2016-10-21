@@ -22,6 +22,30 @@ transaction = read.table("data/fraud/trans.asc",sep = ";", header=T)
     client[client$month<=12,]$gender <- 'Male'
     client[client$month>12,]$month <- client[client$month>12,]$month - 50
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+## simulate transaction data
 library(arules)    
 trans <- random.transactions(nItems = 200, nTrans = 1000, 
                                  lambda = 5, iProb = seq(0.2,0.0001, length=200))
@@ -38,8 +62,8 @@ patterns <- random.patterns(nItems = 1000)
 summary(patterns)
 
 
-library(foreign)
-credit <- read.arff("data/fraud2/credit-g.arff")
+
+
 
 german <- read.csv("data/fraud/german_credit.csv")
 
