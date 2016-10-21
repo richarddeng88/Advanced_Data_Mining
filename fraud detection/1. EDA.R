@@ -12,6 +12,15 @@ district = read.table("data/fraud/district.asc",sep = ";", header=T)
 order = read.table("data/fraud/order.asc",sep = ";", header=T)
 transaction = read.table("data/fraud/trans.asc",sep = ";", header=T)
 
+
+write.csv(card, file = "data/fraud/card.csv",row.names = F)
+write.csv(account, file = "data/fraud/account.csv",row.names = F)
+write.csv(client, file = "data/fraud/client.csv",row.names = F)
+write.csv(disposition, file = "data/fraud/disposition.csv",row.names = F)
+write.csv(district, file = "data/fraud/district.csv",row.names = F)
+write.csv(order, file = "data/fraud/order.csv",row.names = F)
+write.csv(transaction, file = "data/fraud/transaction.csv",row.names = F)
+
 ## transform
     ## client - parse birth-info into year, month, day and gender. 
     client$year <- floor(client$birth_number/10000) + 1900
