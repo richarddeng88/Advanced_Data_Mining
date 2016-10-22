@@ -46,7 +46,7 @@ proc print data=new (obs=10);run;
 
 
 
-* rbind;
+* 2???;
 data card1 card2;set card;run;
 data conbine; set card1 card2;run;
 proc contents data=conbine;run;
@@ -75,16 +75,37 @@ proc print data=new_card (obs=10);
 var type card_id issue ;
 run;
 
+* select / delete variable (subseting variables);
+data new(keep=card_id type issued);
+set card;
+run;
 
-
+data new(drop=type);
+set card;
+run;
 
 * mutation;
-
-
-* merge;
 proc iml;if exist("client") then call delete("work", "client");
 proc import datafile='C:\Users\Richard\Desktop\R\data\fraud\client.csv' out= client;run;
 
+data client_new;
+set client;
+year = floor(birth_number/10000);
+month = floor(mod(birth_number,10000)/100);
+day = floor(mod(birth_number,100));
+gender = 'Male';
+if month > 12 then do;
+	gender = 'Female';
+	month = month-50;
+end;
+run;
+
+*group by;
+proc means data = card;
+class type;
+run;
+
+* merge;
 proc iml;if exist("client") then call delete("work", "disposition");
 proc import datafile='C:\Users\Richard\Desktop\R\data\fraud\disposition.csv' out= disposition;run;
 
