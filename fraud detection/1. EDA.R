@@ -27,7 +27,6 @@ write.csv(transaction, file = "data/fraud/transaction.csv",row.names = F)
     client[client$month<=12,]$gender <- 'Male'
     client[client$month>12,]$month <- client[client$month>12,]$month - 50
 
-<<<<<<< HEAD
 
 # merge data set
     a = merge(disposition, account, by= "account_id")
@@ -40,12 +39,9 @@ write.csv(transaction, file = "data/fraud/transaction.csv",row.names = F)
 
     
     a
-=======
     
     
->>>>>>> origin/master
-    
-    
+
     
     
     
@@ -53,12 +49,7 @@ write.csv(transaction, file = "data/fraud/transaction.csv",row.names = F)
     
     
     
-    
-    
-<<<<<<< HEAD
-=======
-    
-    
+
     
     
     
@@ -68,7 +59,6 @@ write.csv(transaction, file = "data/fraud/transaction.csv",row.names = F)
     
     
 ## simulate transaction data
->>>>>>> origin/master
 library(arules)    
 trans <- random.transactions(nItems = 200, nTrans = 1000, 
                                  lambda = 5, iProb = seq(0.2,0.0001, length=200))
